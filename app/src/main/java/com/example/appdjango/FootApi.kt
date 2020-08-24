@@ -4,12 +4,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 
 interface FootApi {
 
-    @GET(  "/menu")
+    @GET( "/menu")
     suspend fun getMenu() : Response<List<FootResponseItem>>
+
+    @POST("/menu")
+    suspend fun EnvFood(@Body Food:FootResponseItem) : Response<FootResponseItem>
 
     companion object{
         operator fun invoke() : FootApi{
